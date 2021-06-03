@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import FinalScore from './FinalScore'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 
 const FinalCount = ({p1,p2}) => {
     const [playerOne, setPlayerOne ] = useState()
     const [ newScore, setNewScore ] = useState('');
     const [ playerTwo, setPlayerTwo ] = useState()
     const [ finalScore, setFinalScore ] = useState(false)
+    const [ plusDisplay, setPlusDisplay ] = useState(false);
+    const [ minusDisplay, setMinusDisplay ] = useState(false);
     
     const updateScore = (e) => {
         e.preventDefault();
@@ -48,27 +52,40 @@ const FinalCount = ({p1,p2}) => {
        
     
     return ( 
-        <div>
+        <div className="w-full items-center flex justify-center">
         {!finalScore && (
         <div>
           {!playerOne?.complete &&  (<div>{playerOne?.name} to go first in the final count!</div>)}
-          {playerOne?.complete && !playerTwo?.complete && (<div>{playerTwo?.name} to go first in the final count!</div>)}
+          {playerOne?.complete && !playerTwo?.complete && (<div>{playerTwo?.name} is next..the tension mounts</div>)}
 
           
-        <input className="text-black my-6 outline-none py-3 text-4xl text-center" value={newScore} onChange={(e)=> updateScore(e)}/>
+        <input className="text-black my-6 outline-none py-3 text-4xl text-center" maxLength={2} value={newScore} onChange={(e)=> updateScore(e)}/>
             <div className='w-full flex justify-between text-white text-xl'>
             <button className=" w-32 border-none outline-none py-2 rounded-lg text-center bg-green-500" onClick={()=>{
                 changePlayerScore( newScore );
+                setPlusDisplay(true);
+                setTimeout(()=>{
+                    setPlusDisplay(false)
+                },500)
                  setNewScore('')
             }}>Add</button>
              <button className="border-none outline-none py-4 w-32 rounded-lg  text-center bg-red-800 " onClick={()=>{
                  const minusScore = newScore - (newScore * 2)
                 changePlayerScore( minusScore );
+                setMinusDisplay(true);
                  setNewScore('')
+                 setTimeout(()=>{
+                    setMinusDisplay(false)
+                },500)
             }}>Minus</button>
         </div>
         
-        <button onClick={gameOver}>Count complete, next player...</button>
+        <button className="w-full bg-blue-500 text-2xl text-white py-8  mt-4" onClick={gameOver}>Count complete, next player...</button>
+
+        <div className="mt-8 w-full flex justify-center">
+            {plusDisplay &&<FontAwesomeIcon icon={faPlus}  size="5x" className="text-green-400 animate-pulse fill-current transition"/>}
+            {minusDisplay && <FontAwesomeIcon icon={faMinus}  size="5x" className="text-red-600 fill-current animate-pulse transition"/>}
+        </div>
         </div>)}
         {finalScore && (
             <FinalScore p1={playerOne} p2={playerTwo}/>

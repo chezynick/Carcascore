@@ -24,7 +24,7 @@ const PlayerTile = ({player, changePlayerScore, whosGo, leading}) => {
            <p>{player.name}</p> 
            <p >{player.score} pts</p> </div>
            {leading === player.name && <FontAwesomeIcon icon={faCrown} color="black" size="3x" className="absolute top-0 right-0 m-4"/>}
-            <input className="text-black my-6 outline-none py-3 text-4xl text-center" value={newScore} onChange={(e)=> updateScore(e)}/>
+            <input className="text-black my-6 outline-none py-3 text-4xl text-center" value={newScore} maxLength={2} onChange={(e)=> updateScore(e)}/>
             <div className='w-full flex justify-between text-white text-xl'>
             <button className=" w-32 border-none outline-none py-2 rounded-lg text-center bg-green-500" onClick={()=>{
                 changePlayerScore(player, newScore );
