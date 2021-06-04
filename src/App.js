@@ -10,15 +10,15 @@ const [ page, setPage ] = useState('newGame');
 const [ newGame, setNewGame ] =  useState(false);
 
   return (
-    <div className="bg-black text-white">
+    <div className="bg-black text-white w-full h-screen">
       <Header />
       {page !== 'scoreBoard' && (<NavBar setPage={setPage}/>)}
-      <div className="w-full h-screen">
+      <div className="w-full h-auto">
       {page=== "newGame" && (
         <NewGame setNewGame={setNewGame} setPage={setPage}/>
       )}
       {page=== "scoreBoard" && (
-        <div className="mt-12"> 
+        <div className="md:mt-12"> 
         <ScoreBoard newGame={newGame} setNewGame={setNewGame}/></div>
       )}
       {page=== "history" && (

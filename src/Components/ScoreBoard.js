@@ -29,16 +29,16 @@ const ScoreBoard = () => {
   }
     return ( 
         <div >
-       {!finalCountUp && (<div className="w-full justify-evenly flex" >
+       {!finalCountUp && (<div className="w-full justify-evenly flex flex-col md:flex-row" >
            {players.map(player =>(
                <PlayerTile whosGo={whosGo} key={player.name} player={player} leading={leading} changePlayerScore={changePlayerScore}/>
            ))}
            
            </div>)}
            {finalCountUp && (<FinalCount p1={p1} p2={p2} changePlayerScore={changePlayerScore}/>)}
-           <footer className="w-full flex justify-evenly fixed bottom-0 items-center mb-4">
-              {!finalCountUp &&  <button className="w-1/3 bg-black text-yellow-200 border-2 border-yellow-200 py-4 px-6 text-xl font-bold outline-none " onClick={()=>setFinalCountUp(!finalCountUp)}>{finalCountUp ? 'Return to main game screen' :'Enter Final count mode!'}</button>}
-               <button className="w-1/3 bg-yellow-200 text-black py-4 px-6 text-xl font-bold outline-none border-none" onClick={()=>{setP1({name:'nick', score: 0}); setP2({name:'Anne', score: 0}); setFinalCountUp(false)}}>ReStart Game</button>
+           <footer className="w-full flex justify-evenly fixed bottom-0 items-center md:mb-4">
+              {!finalCountUp &&  <button className=" w-1/2 md:w-1/3 bg-black text-yellow-200 border-2 border-yellow-200 py-4 text-center text-xl font-bold outline-none " onClick={()=>setFinalCountUp(!finalCountUp)}>{finalCountUp ? 'Return' :'FinalCount!'}</button>}
+               <button className="w-1/2 md:w-1/3 bg-yellow-200 text-black py-4 text-center text-xl font-bold outline-none border-none" onClick={()=>{setP1({name:'nick', score: 0}); setP2({name:'Anne', score: 0}); setFinalCountUp(false)}}>ReStart</button>
            </footer>
         </div>
      );

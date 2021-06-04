@@ -59,7 +59,14 @@ const FinalCount = ({p1,p2}) => {
           {playerOne?.complete && !playerTwo?.complete && (<div>{playerTwo?.name} is next..the tension mounts</div>)}
 
           
-        <input className="text-black my-6 outline-none py-3 text-4xl text-center" maxLength={2} value={newScore} onChange={(e)=> updateScore(e)}/>
+        <input className="text-black my-6 outline-none py-3 text-4xl text-center" maxLength={2} value={newScore} onChange={(e)=> updateScore(e)} onKeyUp={e => { if(e.key === 'Enter'){
+           changePlayerScore( newScore );
+           setPlusDisplay(true);
+           setTimeout(()=>{
+               setPlusDisplay(false)
+           },500)
+            setNewScore('') 
+        }}}/>
             <div className='w-full flex justify-between text-white text-xl'>
             <button className=" w-32 border-none outline-none py-2 rounded-lg text-center bg-green-500" onClick={()=>{
                 changePlayerScore( newScore );
