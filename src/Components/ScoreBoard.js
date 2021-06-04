@@ -2,6 +2,7 @@ import React, { useEffect, useState} from 'react';
 import FinalCount from './FinalCount'
 
 
+
 import PlayerTile from './PlayerTile'
 
 const ScoreBoard = () => {
@@ -11,7 +12,6 @@ const ScoreBoard = () => {
     const [ leading, setLeading ] = useState('')
     const [finalCountUp, setFinalCountUp] = useState(false);
     const players = [p1,p2]
- 
     useEffect(()=>{
 
         if(p1.score > p2.score){
@@ -38,8 +38,10 @@ const ScoreBoard = () => {
            {finalCountUp && (<FinalCount p1={p1} p2={p2} changePlayerScore={changePlayerScore}/>)}
            <footer className="w-full flex justify-evenly fixed bottom-0 items-center md:mb-4">
               {!finalCountUp &&  <button className=" w-1/2 md:w-1/3 bg-black text-yellow-200 border-2 border-yellow-200 py-4 text-center text-xl font-bold outline-none " onClick={()=>setFinalCountUp(!finalCountUp)}>{finalCountUp ? 'Return' :'FinalCount!'}</button>}
+              
                <button className="w-1/2 md:w-1/3 bg-yellow-200 text-black py-4 text-center text-xl font-bold outline-none border-none" onClick={()=>{setP1({name:'nick', score: 0}); setP2({name:'Anne', score: 0}); setFinalCountUp(false)}}>ReStart</button>
            </footer>
+           
         </div>
      );
 }

@@ -13,7 +13,7 @@ const FinalScore = ({p1,p2}) => {
        <div className="my-6 flex w-full justify-evenly">
        <h1>{p1.name} : {p1.score}</h1> <h1>{p2.name} : {p2.score}</h1></div>
        </div>
-       <FontAwesomeIcon icon={faDragon} size="7x" className="text-indigo-200 fill-current mt-20"/>
+       <FontAwesomeIcon icon={faDragon} size="7x" className="text-indigo-200 fill-current mt-4 md:mt-20"/>
        </div>
      );
 }
