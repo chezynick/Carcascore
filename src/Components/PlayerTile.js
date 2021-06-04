@@ -24,7 +24,7 @@ const PlayerTile = ({player, changePlayerScore, whosGo, leading}) => {
            <p>{player.name}</p> 
            <p >{player.score} pts</p> </div>
            {leading === player.name && <FontAwesomeIcon icon={faCrown} color="black" size="1x" className="absolute top-0 right-0 m-4"/>}
-            <input type="number" min="1" max='99' pattern="[0-9]*" className="text-black my-2 md:my-6 outline-none md:py-3  text-center" value={newScore} maxLength={2} onKeyUp={e => {if(e.key==='Enter'){changePlayerScore(player, newScore );
+            <input type="number" min="1" max='99' pattern="\d*" className="text-black my-2 md:my-6 outline-none md:py-3  text-center" value={newScore} maxLength={2} onKeyUp={e => {if(e.key==='Enter'){changePlayerScore(player, newScore );
                  setNewScore('')}} } onChange={(e)=> updateScore(e)}/>
             <div className='w-full flex justify-between text-white '>
             <button className="w-1/2 md:w-32 border-none outline-none py-2 rounded-lg text-center bg-green-500" onClick={()=>{
