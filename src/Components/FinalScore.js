@@ -10,7 +10,7 @@ const FinalScore = ({p1,p2}) => {
     <div className="w-3/4 bg-indigo-200 text-black font-bold text-5xl py-10 px-4 text-center rounded-2xl">
    {p1.score ===p2.score && (<div>Its a draw</div>) }
        {p1.score !== p2.score && <div>{p1.score > p2.score ? p1.name : p2.name} is the winner!!</div>}
-       <div className="my-6 flex w-full justify-evenly">
+       <div className="my-6 flex w-full justify-evenly flex-col md:flex-row">
        <h1>{p1.name} : {p1.score}</h1> <h1>{p2.name} : {p2.score}</h1></div>
        </div>
        <FontAwesomeIcon icon={faDragon} size="7x" className="text-indigo-200 fill-current mt-4 md:mt-20"/>
