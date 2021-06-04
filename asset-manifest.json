@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Carcascore/static/css/main.52f243d3.chunk.css",
-    "main.js": "/Carcascore/static/js/main.a79eef5b.chunk.js",
-    "main.js.map": "/Carcascore/static/js/main.a79eef5b.chunk.js.map",
+    "main.js": "/Carcascore/static/js/main.e693fd64.chunk.js",
+    "main.js.map": "/Carcascore/static/js/main.e693fd64.chunk.js.map",
     "runtime-main.js": "/Carcascore/static/js/runtime-main.186ad1be.js",
     "runtime-main.js.map": "/Carcascore/static/js/runtime-main.186ad1be.js.map",
     "static/js/2.40673085.chunk.js": "/Carcascore/static/js/2.40673085.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.186ad1be.js",
     "static/js/2.40673085.chunk.js",
     "static/css/main.52f243d3.chunk.css",
-    "static/js/main.a79eef5b.chunk.js"
+    "static/js/main.e693fd64.chunk.js"
   ]
 }
