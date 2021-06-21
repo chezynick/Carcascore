@@ -10,7 +10,7 @@ const [ page, setPage ] = useState('newGame');
 const [ newGame, setNewGame ] =  useState(false);
 
   return (
-    <div className="bg-black text-white w-full h-screen">
+    <div className="bg-black  w-full h-screen text-yellow-300">
       <Header />
       {page !== 'scoreBoard' && (<NavBar setPage={setPage}/>)}
       <div className="w-full h-auto">
