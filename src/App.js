@@ -9,7 +9,8 @@ import './App.css';
 function App() {
 const [ page, setPage ] = useState('newGame');
 const [ showQuitModal, setShowQuitModal] = useState(false);
-const [ newGame, setNewGame ] =  useState(false);
+const [ numberOfPlayers, setNumberOfPlayers] = useState();
+
 
   return (
     <div className="bg-black flex flex-col items-center w-full h-screen text-yellow-300">
@@ -18,12 +19,12 @@ const [ newGame, setNewGame ] =  useState(false);
       {page !== 'scoreBoard' && (<NavBar setPage={setPage}/>)}
       <div className="w-full h-auto">
       {page=== "newGame" && (
-        <NewGame setNewGame={setNewGame} setPage={setPage}/>
+        <NewGame  setPage={setPage} setNumberOfPlayers={setNumberOfPlayers}/>
       )}
       
       {page=== "scoreBoard" && (
         <div className="md:mt-12"> 
-        <ScoreBoard newGame={newGame} setShowQuitModal={setShowQuitModal} setNewGame={setNewGame}/></div>
+        <ScoreBoard  numberOfPlayers={numberOfPlayers} setShowQuitModal={setShowQuitModal} /></div>
       )}
       {page=== "history" && (
         <div>Game history coming soon</div>
