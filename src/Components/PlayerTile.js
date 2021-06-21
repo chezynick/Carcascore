@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCrown } from '@fortawesome/free-solid-svg-icons'
 import Button from './Button'
 
-const PlayerTile = ({player, changePlayerScore, whosGo, leading}) => {
+const PlayerTile = ({player, changePlayerScore, leading}) => {
     const [ newScore, setNewScore ] = useState('');
     const updateScore = (e) => {
         e.preventDefault();
@@ -22,9 +22,6 @@ const PlayerTile = ({player, changePlayerScore, whosGo, leading}) => {
     return ( 
 
         <div className={cn("md:w-1/3 w-full  text-gray-800 text-lg md:text-4xl  p-8 md:rounded-lg flex flex-col justify-evenly relative", {
-            "border-white border-8": (whosGo && player.name === 'nick') || (!whosGo && player.name === 'Anne'),
-            
-           
             "bg-yellow-300": player.name !=='nick',
             "bg-red-600": player.name === 'nick'
         })} >
