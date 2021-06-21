@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Carcascore/static/css/main.004e0180.chunk.css",
-    "main.js": "/Carcascore/static/js/main.16fab058.chunk.js",
-    "main.js.map": "/Carcascore/static/js/main.16fab058.chunk.js.map",
+    "main.css": "/Carcascore/static/css/main.8f5e1272.chunk.css",
+    "main.js": "/Carcascore/static/js/main.48021c3f.chunk.js",
+    "main.js.map": "/Carcascore/static/js/main.48021c3f.chunk.js.map",
     "runtime-main.js": "/Carcascore/static/js/runtime-main.186ad1be.js",
     "runtime-main.js.map": "/Carcascore/static/js/runtime-main.186ad1be.js.map",
     "static/js/2.df677bc2.chunk.js": "/Carcascore/static/js/2.df677bc2.chunk.js",
     "static/js/2.df677bc2.chunk.js.map": "/Carcascore/static/js/2.df677bc2.chunk.js.map",
     "index.html": "/Carcascore/index.html",
-    "static/css/main.004e0180.chunk.css.map": "/Carcascore/static/css/main.004e0180.chunk.css.map",
+    "static/css/main.8f5e1272.chunk.css.map": "/Carcascore/static/css/main.8f5e1272.chunk.css.map",
     "static/js/2.df677bc2.chunk.js.LICENSE.txt": "/Carcascore/static/js/2.df677bc2.chunk.js.LICENSE.txt",
     "static/media/carcascore.ae397ce1.png": "/Carcascore/static/media/carcascore.ae397ce1.png"
   },
   "entrypoints": [
     "static/js/runtime-main.186ad1be.js",
     "static/js/2.df677bc2.chunk.js",
-    "static/css/main.004e0180.chunk.css",
-    "static/js/main.16fab058.chunk.js"
+    "static/css/main.8f5e1272.chunk.css",
+    "static/js/main.48021c3f.chunk.js"
   ]
 }
