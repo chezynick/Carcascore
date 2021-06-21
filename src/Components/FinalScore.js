@@ -14,11 +14,11 @@ const FinalScore = ({players}) => {
     }
     return ( 
 
-<div className="w-full mt-12 flex flex-col items-center justify-center">
-    <div className="w-3/4 bg-indigo-200 text-black font-bold text-5xl py-10 px-4 text-center rounded-2xl">
+<div className="w-full md:mt-12 flex flex-col items-center justify-center">
+    <div className=" w-full md:w-3/4 bg-indigo-200 text-black font-bold text-5xl py-4 md:py-10 px-4 text-center md:rounded-2xl">
    {draw && (<div>Its a draw</div>) }
-       {!draw && <div>{orderedPlayers[0].name} is the winner!!</div>}
-       <div className="my-6 flex w-full justify-evenly flex-col ">
+       {!draw && <div className="flex items-center justify-evenly"><FontAwesomeIcon icon={faDragon} size="2x" className="text-black fill-current "/> {orderedPlayers[0].name} is the winner!!</div>}
+       <div className="md:my-6 flex w-full justify-evenly flex-col ">
        {orderedPlayers.map(player => (
            <div  key={player.name} className={cn(" w-full  text-gray-800 text-lg flex items-stretch  md:text-4xl  p-8  justify-evenly ", {
             "bg-yellow-300": player.name === 'Anne',
@@ -30,7 +30,7 @@ const FinalScore = ({players}) => {
            </div>
        ))}
        </div>
-       <FontAwesomeIcon icon={faDragon} size="5x" className="text-indigo-200 fill-current mt-4 md:mt-20"/>
+       
        </div>
        </div>
      );

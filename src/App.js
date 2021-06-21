@@ -13,7 +13,7 @@ const [ numberOfPlayers, setNumberOfPlayers] = useState();
 
 
   return (
-    <div className="bg-black flex flex-col items-center w-full h-screen text-yellow-300">
+    <div className="bg-black flex flex-col items-center w-full h-auto min-h-screen text-yellow-300">
       <Header setShowQuitModal={setShowQuitModal}/>
       {showQuitModal && (<QuitModal setShowQuitModal={setShowQuitModal}/>)}
       {page !== 'scoreBoard' && (<NavBar setPage={setPage}/>)}
