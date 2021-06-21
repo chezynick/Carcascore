@@ -6,12 +6,19 @@ import Button from './Button'
 
 const PlayerTile = ({player, changePlayerScore, whosGo, leading}) => {
     const [ newScore, setNewScore ] = useState('');
-    console.log(player.name, leading)
     const updateScore = (e) => {
         e.preventDefault();
         setNewScore(e.target.value)
     }
-    
+    const addFunction = () =>{
+        changePlayerScore(player, newScore );
+        setNewScore('')
+    }
+    const minusFunction = () =>{
+        const minusScore = newScore - (newScore * 2)
+        changePlayerScore(player, minusScore );
+         setNewScore('')
+    }
     return ( 
 
         <div className={cn("md:w-1/3 w-full  text-gray-800 text-lg md:text-4xl  p-8 md:rounded-lg flex flex-col justify-evenly relative", {
@@ -28,17 +35,11 @@ const PlayerTile = ({player, changePlayerScore, whosGo, leading}) => {
             <input type="numeric" min="1" max='99' pattern="[0-9]*" className="text-black my-2 md:my-6 outline-none md:py-3  text-center" value={newScore} maxLength={2} onKeyUp={e => {if(e.key==='Enter'){changePlayerScore(player, newScore );
                  setNewScore('')}} } onChange={(e)=> updateScore(e)}/>
             <div className='w-full flex justify-between text-white '>
-            <Button onClick={()=>{
-                changePlayerScore(player, newScore );
-                 setNewScore('')
-            }} outline={false} name="Add"/>
-             <button className="w-1/2 border-none outline-none py-4 md:w-32 rounded-lg  text-center bg-red-800 " onClick={()=>{
-                 const minusScore = newScore - (newScore * 2)
-                changePlayerScore(player, minusScore );
-                 setNewScore('')
-            }}>Minus</button></div>
+            <Button func={addFunction}  name="Add"/>
+            <Button func={minusFunction} name="Minus" outline/>
+             
 
-
+                </div>
         </div>
      );
 }
