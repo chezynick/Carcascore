@@ -1,13 +1,24 @@
 import React from 'react';
 import cn from 'tailwindcss-classnames';
-
+import { startOfToday, format } from 'date-fns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDragon } from '@fortawesome/free-solid-svg-icons'
+import Button from './Button';
+import firebase from '../firebase';
+
 
 const FinalScore = ({players}) => {
     
     const orderedPlayers = players.sort((a,b) => {return a.score < b.score ? 1 : -1} )
-    
+    const saveFunc = () =>{
+        firebase.firestore().collection('scores').add({
+			date: format(startOfToday(), "dd-MMM-yyyy"),
+            players: players
+		}).then(()=>{
+
+            window.location.reload()
+        })
+    }
     let draw
     if(orderedPlayers[0].score === orderedPlayers[1].score ){
         draw = true
@@ -30,7 +41,7 @@ const FinalScore = ({players}) => {
            </div>
        ))}
        </div>
-       
+       <Button func={saveFunc} name="Save"/>
        </div>
        </div>
      );

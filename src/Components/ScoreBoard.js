@@ -49,7 +49,7 @@ const ScoreBoard = ({setShowQuitModal, numberOfPlayers }) => {
         )}
          </div>
            <footer className="w-full flex justify-evenly fixed bottom-0 items-center text-3xl md:mb-4">
-              <Button func={toggleFinalScore} outline alternate name={!finalScore ? 'Complete?' : 'Continue?'}/>
+              <Button func={toggleFinalScore} outline alternate name={!finalScore ? 'Complete?' : 'Go back?'}/>
             <Button func={resetGame} alternate name="Quit game" />
      </footer>
            

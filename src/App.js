@@ -4,12 +4,14 @@ import QuitModal from './Components/QuitModal';
 import NavBar from './Components/Navbar'
 import NewGame from './Components/NewGame'
 import ScoreBoard from './Components/ScoreBoard'
+import History from './Components/History'
 import './App.css';
 
 function App() {
 const [ page, setPage ] = useState('newGame');
 const [ showQuitModal, setShowQuitModal] = useState(false);
 const [ numberOfPlayers, setNumberOfPlayers] = useState();
+//state settings
 
 
   return (
@@ -27,7 +29,7 @@ const [ numberOfPlayers, setNumberOfPlayers] = useState();
         <ScoreBoard  numberOfPlayers={numberOfPlayers} setShowQuitModal={setShowQuitModal} /></div>
       )}
       {page=== "history" && (
-        <div>Game history coming soon</div>
+        <History />
       )}</div>
     </div>
   );
