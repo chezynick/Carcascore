@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import cn from 'tailwindcss-classnames';
 import { startOfToday, format } from 'date-fns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,16 +8,17 @@ import firebase from '../firebase';
 
 
 const FinalScore = ({players}) => {
-    
+    const [ isSaving, setIsSaving ] = useState(false)
     const orderedPlayers = players.sort((a,b) => {return a.score < b.score ? 1 : -1} )
     const saveFunc = () =>{
-        firebase.firestore().collection('scores').add({
-			date: format(startOfToday(), "dd-MMM-yyyy"),
-            players: players
-		}).then(()=>{
+        setIsSaving(true);
+        // firebase.firestore().collection('scores').add({
+		// 	date: format(startOfToday(), "dd-MMM-yyyy"),
+        //     players: players
+		// }).then(()=>{
 
-            window.location.reload()
-        })
+        //     window.location.reload()
+        // })
     }
     let draw
     if(orderedPlayers[0].score === orderedPlayers[1].score ){
@@ -41,7 +42,7 @@ const FinalScore = ({players}) => {
            </div>
        ))}
        </div>
-       <Button func={saveFunc} name="Save"/>
+       <Button func={saveFunc} disabled={isSaving} name={isSaving ? "Saving":"Save"}/>
        </div>
        </div>
      );
