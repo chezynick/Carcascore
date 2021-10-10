@@ -12,13 +12,13 @@ const FinalScore = ({players}) => {
     const orderedPlayers = players.sort((a,b) => {return a.score < b.score ? 1 : -1} )
     const saveFunc = () =>{
         setIsSaving(true);
-        // firebase.firestore().collection('scores').add({
-		// 	date: format(startOfToday(), "dd-MMM-yyyy"),
-        //     players: players
-		// }).then(()=>{
+        firebase.firestore().collection('scores').add({
+			date: format(startOfToday(), "dd-MMM-yyyy"),
+            players: players
+		}).then(()=>{
 
-        //     window.location.reload()
-        // })
+            window.location.reload()
+        })
     }
     let draw
     if(orderedPlayers[0].score === orderedPlayers[1].score ){
