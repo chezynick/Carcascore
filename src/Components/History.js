@@ -25,17 +25,17 @@ const History = () => {
     const nickWins = scores?.filter(score => score.players[0].name.toLowerCase() === 'nick');
     const anneWins = scores?.filter(score => score.players[0].name.toLowerCase() === 'anne');
     const winsThisMonth = (scores) =>{
-        const todaysMonth = moment().format('MMM');
-        const thisMonthScores = scores.filter(score => moment(score.date).format('MMM') === todaysMonth);
+        const todaysMonth = moment().format('MMMYY');
+        const thisMonthScores = scores.filter(score => moment(score.date).format('MMMYY') === todaysMonth);
        return thisMonthScores.length
     }
     const winsLastMonth = (scores) =>{
-        const todaysMonth = moment().subtract(1,'months').format('MMM');
-        const thisMonthScores = scores.filter(score => moment(score.date).format('MMM') === todaysMonth);
+        const todaysMonth = moment().subtract(1,'months').format('MMMYY');
+        const thisMonthScores = scores.filter(score => moment(score.date).format('MMMYY') === todaysMonth);
        return thisMonthScores.length
     }
     return ( 
-        <div className="px-4 w-full lg:w-3/4">
+        <div className="w-full px-4 lg:w-3/4">
          {scores && (  
              <div className="p-4"> 
                 <div>Current scores: Nick: {nickWins.length} - Anne: {anneWins.length}</div>
@@ -44,11 +44,11 @@ const History = () => {
             </div>)}
             <Button alternate func={()=>setViewGames(!viewGames)} name={viewGames ? 'Hide games' :'View all games'}/>
         {viewGames && scores && scores.map(score => (
-            <div key={score.id} className="flex w-full flex-col lg:w-2/3">
-                <div className="flex w-full flex-row items-center">
-                    <h3 className="w-1/3 font-bold my-2">{score.date}</h3>
+            <div key={score.id} className="flex flex-col w-full lg:w-2/3">
+                <div className="flex flex-row items-center w-full">
+                    <h3 className="w-1/3 my-2 font-bold">{score.date}</h3>
                     {score.players.map(player => (
-                    <div className="flex px-4 w-2/3 justify-between" key={player.name.toLowerCase()}>{player.name.toLowerCase()} : {player.score}</div>
+                    <div className="flex justify-between w-2/3 px-4" key={player.name.toLowerCase()}>{player.name.toLowerCase()} : {player.score}</div>
                         ))}
                 </div>
             </div>
