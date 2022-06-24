@@ -4,18 +4,13 @@ import { faFortAwesome } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Header = ({setShowQuitModal}) => {
-const dayArray = ['m','t','w','thur','f','s','sun'];
-const days = 7;
-const period = 3;
-
-console.log(dayArray.splice(0,days - period))
    
-    return ( <div className="w-full pt-6 md:pt-0 h-24 bg-gray-800 flex  items-center justify-evenly text-yellow-300"> 
-    <FontAwesomeIcon icon={faFortAwesome} className=" fill-current hidden md:block"  size="5x" />
-    <button onClick={()=>setShowQuitModal(true)} className="ring-0 fill-current focus:outline-none">
+    return ( <div className="flex items-center w-full h-24 pt-6 text-yellow-300 bg-gray-800 md:pt-0 justify-evenly"> 
+    <FontAwesomeIcon icon={faFortAwesome} className="hidden fill-current md:block"  size="5x" />
+    <button onClick={()=>setShowQuitModal(true)} className="fill-current ring-0 focus:outline-none">
         <img src={carcascoreImage} alt="carcascore title"/>
         </button>
-    <FontAwesomeIcon icon={faFortAwesome}  size="5x" className=" fill-current hidden md:block"/>
+    <FontAwesomeIcon icon={faFortAwesome}  size="5x" className="hidden fill-current md:block"/>
     
     </div> );
 }
