@@ -5,9 +5,9 @@ const QuitModal = ({setShowQuitModal}) => {
     const closeModal = () =>setShowQuitModal(false)
     const refreshPage = () => {window.location.reload()}
     return (
-        <div className="absolute bg-indigo-200 text-black border-2 border-gray-700 mt-40 object-center p-4 sm:p-10  z-50">
+        <div className="absolute z-50 object-center p-4 mt-40 text-black bg-indigo-400 border-2 border-gray-700 sm:p-10">
             <h3>Are you sure you want to quit? all data will be lost</h3>
-            <div className="flex w-full flex-col md:flex-row items-center justify-between mt-8">
+            <div className="flex flex-col items-center justify-between w-full mt-8 md:flex-row">
                 <Button name="Quit" func={refreshPage}/>
                 <Button outline name="Cancel" func={closeModal}/>
             </div>

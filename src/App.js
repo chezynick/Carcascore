@@ -15,10 +15,10 @@ const [ numberOfPlayers, setNumberOfPlayers] = useState();
 
 
   return (
-    <div className="bg-black flex flex-col items-center w-full h-auto min-h-screen text-yellow-300">
+    <div className="flex flex-col items-center w-full h-auto min-h-screen text-yellow-300 bg-black">
       <Header setShowQuitModal={setShowQuitModal}/>
       {showQuitModal && (<QuitModal setShowQuitModal={setShowQuitModal}/>)}
-      {page !== 'scoreBoard' && (<NavBar setPage={setPage}/>)}
+      {page !== 'scoreBoard' && (<NavBar setPage={setPage} page={page}/>)}
       <div className="w-full h-auto">
       {page=== "newGame" && (
         <NewGame  setPage={setPage} setNumberOfPlayers={setNumberOfPlayers}/>
