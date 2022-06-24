@@ -34,18 +34,17 @@ const History = () => {
         const thisMonthScores = scores.filter(score => moment(score.date).format('MMMYY') === todaysMonth);
        return thisMonthScores.length
     }
-    console.log(scores);
     const highestWinningScore = (scores) => {
-       const sortedScores = scores?.map(game => game.players[0]).sort((a,b) => a.score < b.score ? 1 : -1)
-       return sortedScores || []
+       const sortedScores = scores?.map(game => game.players[0]).sort((a,b) => a.score < b.score ? 1 : -1) || []
+       return sortedScores 
     }
     const highestWinningMargin = (scores) => {
         const addMarginToGameScore = scores?.map(game => {
             const winningMargin = game.players[0].score - game.players[1].score;
             return {...game, margin: winningMargin}
         })
-        const sortByMargin = addMarginToGameScore?.sort((a,b) => a.margin < b.margin ? 1 : -1)
-        return sortByMargin[0] || null
+        const sortByMargin = addMarginToGameScore?.sort((a,b) => a.margin < b.margin ? 1 : -1) || null
+        return sortByMargin 
     }
     const highestScore = highestWinningScore(scores);
     const largestMargin = highestWinningMargin(scores)
@@ -56,8 +55,8 @@ const History = () => {
                 <div>Current scores: Nick: {nickWins.length} - Anne: {anneWins.length}</div>
                 <div>This month: Nick: {winsThisMonth(nickWins)} - Anne: {winsThisMonth(anneWins)}</div>
                 <div>Last month: Nick: {winsLastMonth(nickWins)} - Anne: {winsLastMonth(anneWins)}</div>
-               {highestScore &&  <div>Highest winning total: { highestScore(scores)[0].name } - {highestScore(scores)[0].score}  </div>}
-                {largestMargin && <div>Largest winning margin: {largestMargin.players[0].name} beat {largestMargin.players[1].name} by {largestMargin.margin}</div>}
+               {highestScore?.length > 0  &&  <div>Highest winning total: { highestScore[0]?.name } - {highestScore[0]?.score}  </div>}
+                {largestMargin?.length > 0 && <div>Largest winning margin: {largestMargin[0].players[0].name} beat {largestMargin[0].players[1].name} by {largestMargin[0].margin}</div>}
             </div>)}
             <Button alternate func={()=>setViewGames(!viewGames)} name={viewGames ? 'Hide games' :'View all games'}/>
         {viewGames && scores && scores.map(score => (
