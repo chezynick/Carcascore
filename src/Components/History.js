@@ -47,6 +47,7 @@ const History = () => {
         const sortByMargin = addMarginToGameScore?.sort((a,b) => a.margin < b.margin ? 1 : -1)
         return sortByMargin[0] || null
     }
+    const highestScore = highestWinningScore(scores);
     const largestMargin = highestWinningMargin(scores)
     return ( 
         <div className="w-full px-4 lg:w-3/4">
@@ -55,7 +56,7 @@ const History = () => {
                 <div>Current scores: Nick: {nickWins.length} - Anne: {anneWins.length}</div>
                 <div>This month: Nick: {winsThisMonth(nickWins)} - Anne: {winsThisMonth(anneWins)}</div>
                 <div>Last month: Nick: {winsLastMonth(nickWins)} - Anne: {winsLastMonth(anneWins)}</div>
-                <div>Highest winning total: { highestWinningScore(scores)[0].name } - {highestWinningScore(scores)[0].score}  </div>
+               {highestScore &&  <div>Highest winning total: { highestScore(scores)[0].name } - {highestScore(scores)[0].score}  </div>}
                 {largestMargin && <div>Largest winning margin: {largestMargin.players[0].name} beat {largestMargin.players[1].name} by {largestMargin.margin}</div>}
             </div>)}
             <Button alternate func={()=>setViewGames(!viewGames)} name={viewGames ? 'Hide games' :'View all games'}/>
