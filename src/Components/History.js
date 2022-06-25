@@ -3,7 +3,7 @@ import {  format, isBefore, subMonths, startOfToday } from 'date-fns';
 import Button from '../Components/Button'
 import firebase from '../firebase';
 
-const History = () => {
+const History = ({lightMode}) => {
     //state settings
 	const [scores, setScores] = useState();
     const [ viewGames, setViewGames ] = useState(false)
@@ -58,8 +58,9 @@ const History = () => {
                 <div>Last month: Nick: {winsLastMonth(nickWins)} - Anne: {winsLastMonth(anneWins)}</div>
                {highestScore?.length > 0  &&  <div>Highest winning total: { highestScore[0]?.name } - {highestScore[0]?.score}  </div>}
                 {largestMargin?.length > 0 && <div>Largest winning margin: {largestMargin[0].players[0].name} beat {largestMargin[0].players[1].name} by {largestMargin[0].margin}</div>}
+            <div>Cutest player: Anne</div>
             </div>)}
-            <Button alternate func={()=>setViewGames(!viewGames)} name={viewGames ? 'Hide games' :'View all games'}/>
+            <Button lightMode={lightMode} alternate func={()=>setViewGames(!viewGames)} name={viewGames ? 'Hide games' :'View all games'}/>
         {viewGames && scores && scores.map(score => (
             <div key={score.id} className="flex flex-col w-full lg:w-2/3">
                 <div className="flex flex-row items-center w-full">

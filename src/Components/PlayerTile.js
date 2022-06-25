@@ -2,7 +2,7 @@ import React, {useState } from 'react';
 import cn from 'tailwindcss-classnames';
 import Button from './Button'
 
-const PlayerTile = ({player, changePlayerScore }) => {
+const PlayerTile = ({player, changePlayerScore, lightMode }) => {
     
     const [ newScore, setNewScore ] = useState('');
     const updateScore = (e) => {
@@ -26,13 +26,13 @@ const PlayerTile = ({player, changePlayerScore }) => {
             "bg-green-600": player.name === 'Amanda',
             "bg-blue-600": player.name === 'Matt',
         })} >
-            <div className="w-full text-3xl flex justify-evenly">
+            <div className="flex w-full text-3xl justify-evenly">
            <p>{player.name}</p> 
            <p >{player.score} pts</p> </div>
-            <input type="numeric" min="1" max='99' pattern="[0-9]*" className="text-black my-2 md:my-6 outline-none md:py-3  text-center" value={newScore} maxLength={2} onKeyUp={e => {if(e.key==='Enter'){addFunction()}}}  onChange={(e)=> updateScore(e)}/>
-            <div className='w-full flex justify-between text-white '>
-            <Button func={addFunction}  name="Add"/>
-            <Button func={minusFunction} name="Minus" outline/>
+            <input type="numeric" min="1" max='99' pattern="[0-9]*" className="my-2 text-center text-black outline-none md:my-6 md:py-3" value={newScore} maxLength={2} onKeyUp={e => {if(e.key==='Enter'){addFunction()}}}  onChange={(e)=> updateScore(e)}/>
+            <div className='flex justify-between w-full text-white '>
+            <Button lightMode={lightMode} func={addFunction}  name="Add"/>
+            <Button lightMode={lightMode} func={minusFunction} name="Minus" outline/>
            </div>
         </div>
      );

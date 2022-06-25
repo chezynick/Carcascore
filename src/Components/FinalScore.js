@@ -7,7 +7,7 @@ import Button from './Button';
 import firebase from '../firebase';
 
 
-const FinalScore = ({players}) => {
+const FinalScore = ({players, lightMode}) => {
     const [ isSaving, setIsSaving ] = useState(false)
     const orderedPlayers = players.sort((a,b) => {return a.score < b.score ? 1 : -1} )
     const saveFunc = () =>{
@@ -26,11 +26,11 @@ const FinalScore = ({players}) => {
     }
     return ( 
 
-<div className="w-full md:mt-12 flex flex-col items-center justify-center">
-    <div className=" w-full md:w-3/4 bg-indigo-200 text-black font-bold text-5xl py-4 md:py-10 px-4 text-center md:rounded-2xl">
+<div className="flex flex-col items-center justify-center w-full md:mt-12">
+    <div className="w-full px-4 py-4 text-5xl font-bold text-center text-black bg-indigo-200 md:w-3/4 md:py-10 md:rounded-2xl">
    {draw && (<div>Its a draw</div>) }
        {!draw && <div className="flex items-center justify-evenly"><FontAwesomeIcon icon={faDragon} size="2x" className="text-black fill-current "/> {orderedPlayers[0].name} is the winner!!</div>}
-       <div className="md:my-6 flex w-full justify-evenly flex-col ">
+       <div className="flex flex-col w-full md:my-6 justify-evenly ">
        {orderedPlayers.map(player => (
            <div  key={player.name} className={cn(" w-full  text-gray-800 text-lg flex items-stretch  md:text-4xl  p-8  justify-evenly ", {
             "bg-yellow-300": player.name === 'Anne',
@@ -42,7 +42,7 @@ const FinalScore = ({players}) => {
            </div>
        ))}
        </div>
-       <Button func={saveFunc} disabled={isSaving} name={isSaving ? "Saving":"Save"}/>
+       <Button lightMode={lightMode} func={saveFunc} disabled={isSaving} name={isSaving ? "Saving":"Save"}/>
        </div>
        </div>
      );
