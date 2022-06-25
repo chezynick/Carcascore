@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import moment from 'moment';
+import {  format, isBefore, subMonths, startOfToday } from 'date-fns';
 import Button from '../Components/Button'
 import firebase from '../firebase';
 
@@ -18,20 +18,21 @@ const History = () => {
 				items.push(actObj);
 			});
             const orderByDate = items.sort((a,b) => {
-                return moment(a.date).isBefore(moment(b.date)) ? 1 : -1})
+                return isBefore(new Date(a.date), new Date(b.date)) ? 1 : -1})
 			setScores(orderByDate);
+            
         })
 	},[]);
     const nickWins = scores?.filter(score => score.players[0].name.toLowerCase() === 'nick');
     const anneWins = scores?.filter(score => score.players[0].name.toLowerCase() === 'anne');
     const winsThisMonth = (scores) =>{
-        const todaysMonth = moment().format('MMMYY');
-        const thisMonthScores = scores.filter(score => moment(score.date).format('MMMYY') === todaysMonth);
+        const todaysMonth = format(startOfToday(), 'MMMyy');
+        const thisMonthScores = scores.filter(score => format(new Date(score.date),'MMMyy') === todaysMonth);
        return thisMonthScores.length
     }
     const winsLastMonth = (scores) =>{
-        const todaysMonth = moment().subtract(1,'months').format('MMMYY');
-        const thisMonthScores = scores.filter(score => moment(score.date).format('MMMYY') === todaysMonth);
+        const todaysMonth = format(subMonths(startOfToday(), 1),'MMMyy');
+        const thisMonthScores = scores.filter(score => format(new Date(score.date),'MMMyy') === todaysMonth);
        return thisMonthScores.length
     }
     const highestWinningScore = (scores) => {
