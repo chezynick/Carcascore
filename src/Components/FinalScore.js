@@ -32,7 +32,7 @@ const FinalScore = ({players, lightMode}) => {
        {!draw && <div className="flex items-center justify-evenly"><FontAwesomeIcon icon={faDragon} size="2x" className="text-black fill-current "/> {orderedPlayers[0].name} is the winner!!</div>}
        <div className="flex flex-col w-full md:my-6 justify-evenly ">
        {orderedPlayers.map(player => (
-           <div  key={player.name} className={cn(" w-full  text-gray-800 text-lg flex items-stretch  md:text-4xl  p-8  justify-evenly ", {
+           <div  key={player.name} className={cn(` w-full  text-gray-800 text-lg flex items-stretch  md:text-4xl  p-8  justify-evenly ${lightMode ? 'opacity-40': ''}`, {
             "bg-yellow-300": player.name === 'Anne',
             "bg-red-600": player.name === 'Nick',
             "bg-green-600": player.name === 'Amanda',

@@ -1,6 +1,8 @@
 import React from 'react';
 import carcascoreImage from './carcascore.png';
 import { faFortAwesome } from '@fortawesome/free-brands-svg-icons'
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classnames from 'classnames'
 
@@ -14,9 +16,9 @@ const Header = ({setShowQuitModal, lightMode, setLightMode }) => {
     <FontAwesomeIcon icon={faFortAwesome} className="hidden fill-current md:block"  size="5x" />
     <button  onClick={()=>setShowQuitModal(true)} className="fill-current ring-0 focus:outline-none">
         {!lightMode && <img src={carcascoreImage} alt="carcascore title"/>}
-        {lightMode && <h1 className='text-6xl text-red-400'>CarcaScore</h1>}
+        {lightMode && <h1 className='text-3xl text-red-400 sm:text-6xl'>CarcaScore</h1>}
         </button>
-    <div><label htmlFor="lightMode">Light Mode</label> <input type="checkbox" onChange={()=>setLightMode(!lightMode)} name="lightMode"/></div>
+    <div className='flex items-center' ><label htmlFor='lightMode'>{lightMode ? <FontAwesomeIcon className='mr-2 text-black fill-current' icon={faMoon} /> : <FontAwesomeIcon className='mr-2 text-yellow-400 fill-current' icon={faSun} />}</label> <input type="checkbox" onChange={()=>setLightMode(!lightMode)} name="lightMode"/></div>
    
     </div> );
 }
