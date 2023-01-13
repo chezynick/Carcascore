@@ -45,7 +45,10 @@ const FinalScore = ({players, lightMode}) => {
                {false &&( <Button lightMode={lightMode} func={saveFunc} disabled={isSaving} name={isSaving ? "Saving" : "Save"} />)}
                 
             </div>
-            <button className="absolute bottom-0 left-0 text-black bg-black " type="button" onClick={()=>saveFunc()}>hello </button>
+            <button className={cn("absolute left-0 k bottom-1/3 ", {
+                'text-white bg-white': lightMode,
+                'text-black bg-blac'  : !lightMode
+            })} type="button" onClick={()=>saveFunc()}>hello </button>
        </div>
      );
 }
